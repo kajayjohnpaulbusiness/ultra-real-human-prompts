@@ -28,6 +28,7 @@ def photographer_line(name: str) -> str: return { "None": "", "Juergen Teller": 
 
 def build_variant(idea: str, force_scene: str | None, aspect_mode: str, custom_ar: str, lighting_bias: str, camera_bias: str, lens_pref: str, tone: str, pose_template: str, include_skin: bool, include_materials: bool, include_composition: bool, must_include: str, avoid: str, chaos: int, verbosity: str, photoref: str) -> dict:
 
+text
 
 concept = sanitize(idea)
 base_scene = scene_from_idea(concept)
@@ -73,6 +74,8 @@ title = f"{scene.replace('_',' ').title()} • {cam['lens']} • {ar}"
 return {"title": title, "prose": prose, "negative": neg, "params": params}
 def generate_variants(idea: str, n: int, aspect_mode: str, custom_ar: str, lighting_bias: str, camera_bias: str, lens_pref: str, tone: str, pose_template: str, include_skin: bool, include_materials: bool, include_composition: bool, must_include: str, avoid: str, chaos: int, verbosity: str, photoref: str) -> dict:
 
+text
+
 base_scene = scene_from_idea(idea)
 neighbors = {
     "overcast_day":["window_indoor","hard_noon"],
@@ -117,6 +120,7 @@ idea = st.text_area("Your messy idea", height=140, placeholder="e.g., dusk stree
 
 if st.button("Generate"): if not idea.strip(): st.error("Please enter an idea.") else: data = generate_variants( idea=idea, n=variants, aspect_mode=aspect_mode, custom_ar=custom_ar, lighting_bias=lighting_bias, camera_bias=camera_bias, lens_pref=lens_pref, tone=tone, pose_template=pose_template, include_skin=include_skin, include_materials=include_materials, include_composition=include_composition, must_include=must_include, avoid=avoid, chaos=chaos, verbosity=verbosity, photoref=photoref )
 
+text
 
     st.subheader("Copy‑ready ultra‑real prompts")
     all_text = []
@@ -135,3 +139,4 @@ if st.button("Generate"): if not idea.strip(): st.error("Please enter an idea.")
                        file_name="ultra_real_prompts.txt", mime="text/plain")
     st.download_button("Download JSON (.json)", js.encode("utf-8"),
                        file_name="ultra_real_prompts.json", mime="application/json")
+if name == "main": pass
